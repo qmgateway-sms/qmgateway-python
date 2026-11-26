@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (unreleased)
+## 0.1.0 (2026-11-26)
 - First version: messages (send, send to many, status, list, scheduled, cancel, reschedule), inbox, devices, one-time passwords, account, balance and statistics.
 - Python 3.10 or newer, standard library only (no dependencies), fully typed (`py.typed`).
 - Typed results and typed errors (`AuthenticationError`, `PermissionDeniedError`, `InvalidRequestError`, `NotFoundError`, `RateLimitError`, `ServerError`, `QMConnectionError`).
