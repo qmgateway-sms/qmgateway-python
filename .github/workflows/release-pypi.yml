@@ -20,9 +20,14 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with: { persist-credentials: false }
       - name: Check the tag is signed
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git fetch --tags --force
-          git verify-tag "${GITHUB_REF_NAME}" || { echo "The tag is not signed. Refusing to publish."; exit 1; }
+          [ "$(git cat-file -t "refs/tags/${GITHUB_REF_NAME}")" = "tag" ] || { echo "Use an annotated, signed tag (git tag -s). Refusing to publish."; exit 1; }
+          sha=$(git rev-parse "refs/tags/${GITHUB_REF_NAME}")
+          ok=$(curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${GITHUB_REPOSITORY}/git/tags/${sha}" | jq -r '.verification.verified')
+          [ "$ok" = "true" ] || { echo "GitHub does not show this tag as Verified. Refusing to publish."; exit 1; }
       - name: The changelog entry for this version is dated
         run: |
           v="${GITHUB_REF_NAME#v}"
