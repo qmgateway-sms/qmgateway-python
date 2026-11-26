@@ -1,0 +1,9 @@
+# Weekly updates for the tooling and for GitHub Actions (so pinned action hashes stay current).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly }
+  - package-ecosystem: pip      # the SDK has no dependencies
+    directory: /
+    schedule: { interval: weekly }

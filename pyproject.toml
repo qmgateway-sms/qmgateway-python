@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qmgateway"
+version = "0.1.0"
+description = "Send SMS and one-time passwords with QMGateway. No dependencies."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+classifiers = ["Programming Language :: Python :: 3", "Typing :: Typed"]
+
+[project.urls]
+Homepage = "https://github.com/qmgateway-sms/qmgateway-python"
+Source = "https://github.com/qmgateway-sms/qmgateway-python"
+Issues = "https://github.com/qmgateway-sms/qmgateway-python/issues"
+Security = "https://github.com/qmgateway-sms/qmgateway-python/security/policy"
+
+[project.scripts]
+qmgateway = "qmgateway._cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+qmgateway = ["py.typed"]

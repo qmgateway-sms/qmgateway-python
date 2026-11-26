@@ -1,0 +1,4 @@
+# Changes to these paths need a review from @qmgateway-sms (set "Require review from Code Owners" on main).
+/.github/                @qmgateway-sms
+/SECURITY.md             @qmgateway-sms
+/pyproject.toml         @qmgateway-sms
